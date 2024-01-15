@@ -1,19 +1,45 @@
-// import React from 'react';
+import { useState } from "react";
+import "../App.css";
 import PropTypes from "prop-types";
+import CardDetails from "./CardDetails";
 
 function GalleryCard(props) {
-  let tags = props.tags;
-  tags = tags.slice(0, 80);
+  const [detail, setDetail] = useState(false);
 
   let source = props.source;
   if (source == "") source = props.file;
 
+  const [tags, rating, comment] = [props.tags, props.rating, props.comment];
+
   return (
-    <div className="w-1/4 h-2/4 inline border-gray-500 border-4 rounded shadow">
-      <a href={source} target="_blank" rel="noreferrer">
-        <img className="bg-cover" src={props.file} alt="" />
-      </a>
-      <p> Tags : {tags}</p>
+    <div
+      className="w-fit h-[60vh] bg-white rounded shadow overflow-hidden flex flex-col"
+      id="image"
+    >
+      <div className="flex justify-center items-center">
+        <div>
+          <img className="h-[53.5vh]" src={props.file} alt="" />
+        </div>
+        <div>
+          {detail && (
+            <CardDetails
+              tags={tags}
+              rating={rating}
+              comment={comment}
+              file={props.file}
+            />
+          )}
+        </div>
+      </div>
+
+      <div
+        className="cursor-pointer bg-white border-black border-t-2 flex justify-center text-2xl"
+        onClick={() => {
+          detail ? setDetail(false) : setDetail(true);
+        }}
+      >
+        👀
+      </div>
     </div>
   );
 }
@@ -22,6 +48,8 @@ GalleryCard.propTypes = {
   tags: PropTypes.string,
   file: PropTypes.string,
   source: PropTypes.string,
+  rating: PropTypes.string,
+  comment: PropTypes.number,
 };
 
 export default GalleryCard;

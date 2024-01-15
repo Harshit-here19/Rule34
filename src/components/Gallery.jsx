@@ -4,6 +4,9 @@ import GalleryCard from "./GalleryCard";
 
 function Gallery() {
   const [articles, setArticles] = useState([]);
+  const [searchTags, setSearchTags] = useState("");
+  const [searchBool, setSearchBool] = useState(false);
+
   const fetchData = async () => {
     const url =
       "https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&limit=20&json=1";
@@ -19,17 +22,56 @@ function Gallery() {
     };
   }, []);
 
+  const search = async () => {
+    try {
+      //   setArticles([]);
+      const input = document.querySelector("input");
+      setSearchTags(input.value);
+      setSearchBool(true);
+      const url = `https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&limit=20&json=1&tags=${searchTags}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setArticles(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
+      <div className="flex justify-center items-center mb-8">
+        <input
+          name="search"
+          placeholder="Search the Tags"
+          className="w-[40vw] h-[7vh] pl-4 bg-white placeholder:text-slate-700  text-black"
+        ></input>
+        <button
+          className="w-[10vw] bg-purple-900 text-white h-[7vh]"
+          onClick={search}
+        >
+          Search
+        </button>
+      </div>
+
+      <div className="flex justify-center items-center mb-8">
+        {searchBool && (
+          <p className="text-xl ">Showing Results : {searchTags} </p>
+        )}
+      </div>
+
       <div className="flex flex-wrap gap-8 justify-center items-center">
         {articles.map((e) => {
           return (
-            <GalleryCard
-              key={e.id}
-              tags={e.tags}
-              file={e.file_url}
-              source={e.source}
-            />
+            e.file_url && (
+              <GalleryCard
+                key={e.id}
+                tags={e.tags}
+                file={e.file_url}
+                source={e.source}
+                rating={e.rating}
+                comment={e.comment_count}
+              />
+            )
           );
         })}
       </div>

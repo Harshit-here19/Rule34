@@ -1,6 +1,29 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  box-sizing: border-box;
+}
+
+#image {
+  background-size: contain;
+  background-position: center;
+}
+
+#CardDetails {
+  position: relative;
+}
+
+#CardDetails::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("https://img.freepik.com/free-vector/comic-abstract-blue-background_225004-669.jpg?w=740&t=st=1705082139~exp=1705082739~hmac=30f0fefadda84e10f53b427cb96bf5314eb45e8f844af3eddd63a8e3580f1ca9");
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+}
+
+#CardDetails div {
+  position: relative;
 }

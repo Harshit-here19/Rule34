@@ -1,13 +1,27 @@
 import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Gallery from "./components/Gallery";
-import Navbar from "./components/Navbar";
+import Root from "./components/Root";
+import ErrorPage from "./error-page";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/gallery",
+        element: <Gallery />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
     <>
-      <Navbar />
-      <h1 className="text-3xl font-bold text-blue-500">Hello Mahima</h1>
-      <Gallery />
+      <RouterProvider router={router} />
     </>
   );
 }
