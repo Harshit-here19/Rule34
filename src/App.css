@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto+Slab&family=Rubik+Doodle+Shadow&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
 }
 
 #image {
@@ -26,4 +29,12 @@
 
 #CardDetails div {
   position: relative;
+}
+
+#contactCard {
+  box-shadow: 10px 10px 10px gray;
+}
+
+#scrollDiv {
+  overflow-x: scroll;
 }

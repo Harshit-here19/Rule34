@@ -7,7 +7,7 @@ function CardDetails(props) {
 
   return (
     <div
-      className="w-[30vw] h-[53.5vh] p-4 flex flex-col justify-evenly"
+      className="md:w-[30vw] md:h-[53.5vh] w-[80vw] h-fit p-4 flex flex-col justify-evenly"
       id="CardDetails"
     >
       <div>

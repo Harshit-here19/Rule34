@@ -39,10 +39,10 @@ function Navbar() {
             <Link to="/gallery">GALLERY</Link>
           </li>
           <li className="text-xl md:mt-0 mt-5 text-black hover:text-purple-700 cursor-pointer duration-400">
-            ABOUT US
+            <Link to="/recommendation">RECOMMENDATION</Link>
           </li>
           <li className="text-xl md:mt-0 mt-5 mb-3 md:mb-0 text-black hover:text-purple-700 cursor-pointer duration-400 mr-4">
-            CONTACT US
+            <Link to="/contactus">CONTACT US</Link>
           </li>
         </ul>
       </nav>

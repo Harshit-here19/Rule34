@@ -13,10 +13,10 @@ function GalleryCard(props) {
 
   return (
     <div
-      className="w-fit h-[60vh] bg-white rounded shadow overflow-hidden flex flex-col"
+      className="w-fit h-fit md:h-[60vh] bg-black rounded shadow overflow-hidden flex flex-col"
       id="image"
     >
-      <div className="flex justify-center items-center">
+      <div className="flex md:flex-row flex-col justify-center items-center">
         <div>
           <img className="h-[53.5vh]" src={props.file} alt="" />
         </div>
