@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import ErrorPage from "../error-page";
 import GalleryCard from "./GalleryCard";
 import SkeletonCard from "./SkeletonCard";
@@ -20,7 +20,7 @@ function Gallery() {
     setArticles(data);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     return () => {
       fetchData();
     };

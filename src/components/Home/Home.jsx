@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import HomeCard from "./HomeCard";
 
 export default function Home() {
@@ -26,10 +26,8 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
-    return () => {
-      getImages();
-    };
+  useLayoutEffect(() => {
+    getImages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
