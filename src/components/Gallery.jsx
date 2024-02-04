@@ -21,9 +21,7 @@ function Gallery() {
   };
 
   useLayoutEffect(() => {
-    return () => {
-      fetchData();
-    };
+    fetchData();
   }, []);
 
   const search = async () => {
