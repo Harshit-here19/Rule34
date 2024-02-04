@@ -8,10 +8,10 @@ function Navbar() {
 
     name === "menu"
       ? (setname("close"),
-        list.classList.add("top-[50px]"),
+        list.classList.add("top-[60px]"),
         list.classList.add("opacity-100"))
       : (setname("menu"),
-        list.classList.remove("top-[50px]"),
+        list.classList.remove("top-[60px]"),
         list.classList.remove("opacity-100"));
   }
 
@@ -23,7 +23,7 @@ function Navbar() {
             <Link to="/"> Rule 34</Link>
           </span>
 
-          <span className="text-3xl mx-2 cursor-pointer md:hidden block text-black">
+          <span className="text-3xl mx-2 cursor-pointer md:hidden block text-black absolute right-0 top-6">
             <ion-icon name="menu-outline" onClick={menu}></ion-icon>
           </span>
         </div>

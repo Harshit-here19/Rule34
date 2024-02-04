@@ -14,18 +14,35 @@ export default function ContactUs() {
           </h1>
           <ul className="text-black w-full text-center">
             <li className="my-8 font-semibold bg-purple-600 w-full py-4 text-white border-x-4 border-white">
-              <Link className="font-sans">Github</Link>
+              <Link
+                to="https://github.com/Harshit-here19"
+                className="font-sans"
+              >
+                <ion-icon name="logo-github"></ion-icon> Github
+              </Link>
             </li>
             <li className="my-8 font-semibold">
-              <Link className="font-sans">Instgram</Link>
+              <Link
+                to="https://www.instagram.com/harshit.here.19/"
+                className="font-sans"
+              >
+                <ion-icon name="logo-instagram"></ion-icon> Instgram
+              </Link>
             </li>
             <li className="my-8 font-semibold bg-purple-600 w-full py-4 text-white border-x-4 border-white">
-              <Link className="font-sans">LinkedIn</Link>
+              <Link
+                to="https://www.linkedin.com/in/harshit-sikarwar-b26285204/"
+                className="font-sans"
+              >
+                <ion-icon name="logo-linkedin"></ion-icon> LinkedIn
+              </Link>
             </li>
           </ul>
 
           <p className="py-4 font-serif w-full rounded-xl bg-cyan-800 text-center border-4 border-white font-semibold">
-            <span className="text-sm">E-mail :-</span>
+            <span className="text-sm">
+              <ion-icon name="mail-outline"></ion-icon> E-mail :-
+            </span>
             <hr />
             Harshitsikarwar232@gmail.com
           </p>

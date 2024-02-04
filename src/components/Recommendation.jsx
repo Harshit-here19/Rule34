@@ -2,20 +2,19 @@ import { useState } from "react";
 import RecommCard from "./RecommCard";
 
 export default function Recommendation() {
-  const [searchTerm, setSearchTerm] = useState("");
   const [result, setResult] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [Error, setError] = useState("");
 
   const search = async () => {
     const input = document.querySelector("input");
-    let temp = input.value;
+    let temp = input.value.toLowerCase();
     let temp2 = temp.replace(/\s/g, "%20");
-    setSearchTerm(temp);
 
-    const url = `https://porn-pictures-api.p.rapidapi.com/images/${temp2}`;
+    const url = `https://porn-pictures-api.p.rapidapi.com/pictures/${temp2}`;
     const options = {
       method: "GET",
       headers: {
-        param: `${searchTerm}`,
         "X-RapidAPI-Key": "2c4f65215emsh67cdfa36fb1aee7p14c84djsnfabbedcb4c6a",
         "X-RapidAPI-Host": "porn-pictures-api.p.rapidapi.com",
       },
@@ -24,10 +23,16 @@ export default function Recommendation() {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      console.log(data[0]);
+      const status = response.status;
+      if (status === 500) {
+        throw new Error("Server Problem Try to search a available keyword");
+      }
+      console.log(data);
       setResult(data);
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.log(err);
+      setIsError(true);
+      setError(err);
     }
   };
   return (
@@ -48,17 +53,24 @@ export default function Recommendation() {
         </button>
       </div>
 
-      {result.map((e) => {
-        return (
-          <RecommCard
-            key={e.id}
-            title={e.title}
-            name={e.models}
-            source={e.source}
-            img={e.images}
-          />
-        );
-      })}
+      {isError && (
+        <div className="text-center">
+          <p>Search the Relevant PortStar</p>
+        </div>
+      )}
+
+      {!isError &&
+        result.map((e) => {
+          return (
+            <RecommCard
+              key={e.id}
+              title={e.title}
+              name={e.models}
+              source={e.source}
+              img={e.images}
+            />
+          );
+        })}
     </>
   );
 }
